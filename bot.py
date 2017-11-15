@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
 import logging
+import mytoken
 
-token = 'MzgwMTM1NDY2Nzk3NjI5NDYw.DO0iNA._-vW84Ke7kw7fD3a-rvPUz4S-9I'
+token = mytoken.token
 
 #logging.basicConfig(level=logging.DEBUG)
 bot = commands.Bot(command_prefix='!', description='Labelis Personal Bot')
