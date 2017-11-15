@@ -1,9 +1,6 @@
 import discord
 from discord.ext import commands
 import logging
-import mytoken
-
-token = mytoken.token
 
 #logging.basicConfig(level=logging.DEBUG)
 bot = commands.Bot(command_prefix='!', description='Labelis Personal Bot')
@@ -58,4 +55,4 @@ async def iam(ctx):
         else:
             await bot.send_message(ctx.message.channel, 'You already are a ' + iamListNames[0])
 
-bot.run(token)
+bot.run(process.env.BOT_TOKEN)
