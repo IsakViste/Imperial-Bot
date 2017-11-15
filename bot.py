@@ -55,4 +55,4 @@ async def iam(ctx):
         else:
             await bot.send_message(ctx.message.channel, 'You already are a ' + iamListNames[0])
 
-bot.run(process.env.BOT_TOKEN)
+bot.run(os.environ.get('BOT_TOKEN', True))
