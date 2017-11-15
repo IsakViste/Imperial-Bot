@@ -130,4 +130,4 @@ async def iamnot(ctx):
     await bot.edit_message(mes, new_content='Role not found, `!i list` to list your roles that you can remove')
 
 # Run the bot
-bot.run('MzgwMzY0MjY0OTQ4NDk4NDMz.DO3hVw.3tyVwnL0PUS_3OYy3Ez1iqQXvKE')
+bot.run(bot.run(os.environ.get('BOT_TOKEN', True)))
