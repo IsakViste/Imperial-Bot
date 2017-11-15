@@ -13,8 +13,8 @@ async def on_ready():
     print()
     
 # Iam Commands and Info
-iamListNames = ['Game Design Student', 'Ancien']
-iamListAlias = ['GDS', 'Anc']
+iamListNames = ['Game Design Student']
+iamListAlias = ['GDS']
 
 # Iam Help menu
 def setup_ihelp():
