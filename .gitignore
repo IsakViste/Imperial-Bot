@@ -1,4 +1,4 @@
 # Ignore
+.idea
 __pycache__
-venv
-BETA
+key.py

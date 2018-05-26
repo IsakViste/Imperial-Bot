@@ -3,8 +3,13 @@ import discord
 from discord.ext import commands
 import logging
 
+from key import TOKEN
+
+## VARIABLES ##
 #logging.basicConfig(level=logging.DEBUG)
-bot = commands.Bot(command_prefix='!', description='Labelis Personal Bot')
+bot = commands.Bot(command_prefix='!', description='Dynasty Networks Imperial Bot')
+
+print(TOKEN)
 
 @bot.event
 async def on_ready():
@@ -12,17 +17,17 @@ async def on_ready():
     print(bot.user.name + ' - (' + bot.user.id + ')')
     print()
     
-# Iam Commands and Info
-iamListNames = ['Game Design Student']
-iamListAlias = ['GDS']
+## ROLES AND ALIASES ##
+iamListNames = ['Rainbow Six', 'Civilization']
+iamListAlias = ['R6S', 'Civ']
 
-# Iam Help menu
+## HELP MENU ##
 def setup_ihelp():
     h = '''```COMMAND: !i
 DESCRIPTION: Assign yourself one of the optional roles
 USAGE:
     !i list
-        List your optional roles
+        List your roles
     !i roles
         List possible roles
     !iam <role>
@@ -34,7 +39,7 @@ USAGE:
 ihelp = setup_ihelp()
 
 
-
+## COMMANDS ##
 @bot.command(pass_context=True)
 async def i(ctx):
     command = ctx.message.content
@@ -45,10 +50,10 @@ async def i(ctx):
         await bot.send_message(ctx.message.channel, ihelp)
         return
     
-    #!i list
+    ## !i list
     if(argument == 'list'):
         mes = await bot.send_message(ctx.message.channel, 'Showing list...')
-        ilist = 'List of your optional roles:\n'
+        ilist = 'List of your roles:\n'
         found = False
         for i in ctx.message.author.roles:
             for j in range (len(iamListNames)):
@@ -60,7 +65,7 @@ async def i(ctx):
         await bot.edit_message(mes, new_content=ilist)
         return
     
-    #!i roles
+    ## !i roles
     if(argument == 'roles'):
         mes = await bot.send_message(ctx.message.channel, 'Showing roles...')
         iroles = 'List of roles you can assign yourself:'
@@ -79,7 +84,7 @@ async def iam(ctx):
         await bot.send_message(ctx.message.channel, ihelp)
         return
     
-    #!iam <role>
+    ## !iam <role>
     mes = await bot.send_message(ctx.message.channel, 'Adding role...')
     for i in range(len(iamListAlias)):
         if(argument == iamListAlias[i]):
@@ -109,7 +114,7 @@ async def iamnot(ctx):
         await bot.send_message(ctx.message.channel, ihelp)
         return
     
-    #!iamnot <role>
+    ## !iamnot <role>
     mes = await bot.send_message(ctx.message.channel, 'Removing role...')
     for i in range(len(iamListAlias)):
         if(argument == iamListAlias[i]):
@@ -129,5 +134,5 @@ async def iamnot(ctx):
                 return
     await bot.edit_message(mes, new_content='Role not found, `!i list` to list your roles that you can remove')
 
-# Run the bot
-bot.run(bot.run(os.environ.get('BOT_TOKEN', True)))
+## RUN BOT ##
+bot.run(TOKEN)
