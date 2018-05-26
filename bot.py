@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import discord
 from discord.ext import commands
@@ -8,8 +10,6 @@ from key import TOKEN
 ## VARIABLES ##
 #logging.basicConfig(level=logging.DEBUG)
 bot = commands.Bot(command_prefix='!', description='Dynasty Networks Imperial Bot')
-
-print(TOKEN)
 
 @bot.event
 async def on_ready():
@@ -97,10 +97,10 @@ async def iam(ctx):
                     found = True
             if(not found):
                 await bot.add_roles(ctx.message.author, role)
-                await bot.edit_message(mes, new_content='You are now a ' + iamListNames[i])
+                await bot.edit_message(mes, new_content='You are now a ' + iamListNames[i] + ' player!')
                 return
             else:
-                await bot.edit_message(mes, new_content='You already are a ' + iamListNames[i])
+                await bot.edit_message(mes, new_content='You are already a ' + iamListNames[i] + ' player!')
                 return
     await bot.edit_message(mes, new_content='Role not found, `!i roles` for list of possible roles')
     
@@ -127,10 +127,10 @@ async def iamnot(ctx):
                     found = True
             if(found):
                 await bot.remove_roles(ctx.message.author, role)
-                await bot.edit_message(mes, new_content='You are no more a ' + iamListNames[i])
+                await bot.edit_message(mes, new_content='You are no more a ' + iamListNames[i] + ' player!')
                 return
             else:
-                await bot.edit_message(mes, new_content='You are not a ' + iamListNames[i])
+                await bot.edit_message(mes, new_content='You are not a ' + iamListNames[i] + ' player!')
                 return
     await bot.edit_message(mes, new_content='Role not found, `!i list` to list your roles that you can remove')
 
